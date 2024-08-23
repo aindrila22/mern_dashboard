@@ -1,14 +1,20 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const app = express();
+const insertDataRoute = require("./routes/insert_data");
+const dataRoutes = require("./routes/get_data");
 
-require("./config/db");
+const connectDB = require("./config/db");
+connectDB();
 
 app.use(express.json());
+app.use(cors({
+    origin: 'http://localhost:5173', // Your frontend URL
+  }));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use('/api', insertDataRoute);
+app.use('/api', dataRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
