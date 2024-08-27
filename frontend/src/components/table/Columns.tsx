@@ -6,7 +6,9 @@ const Columns = ({ data }) => {
   const [filters, setFilters] = useState({});
   const rowsPerPage = 10;
 
-  const headers = Object.keys(data[0] || {}).filter(header => header !== '_id');
+  const headers = Object.keys(data[0] || {}).filter(
+    (header) => header !== "_id"
+  );
 
   const filteredData = data.filter((row) => {
     return headers.every((header) => {
@@ -24,7 +26,7 @@ const Columns = ({ data }) => {
 
   const handleFilterChange = (header, value) => {
     setFilters({ ...filters, [header]: value });
-    setCurrentPage(1); // Reset to first page when filters change
+    setCurrentPage(1);
   };
 
   return (
@@ -52,7 +54,9 @@ const Columns = ({ data }) => {
                       placeholder={`Filter ${header}`}
                       className="mt-1 p-1 border border-gray-300 rounded-md"
                       value={filters[header] || ""}
-                      onChange={(e) => handleFilterChange(header, e.target.value)}
+                      onChange={(e) =>
+                        handleFilterChange(header, e.target.value)
+                      }
                     />
                   </div>
                 </th>

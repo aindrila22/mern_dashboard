@@ -1,15 +1,6 @@
-
 import React from "react";
 
-interface Props {
-  rowsPerPage: number;
-  setCurrentPage: (page: number) => void;
-  currentPage: number;
-  totalPages: number;
-  totalColumns: number;
-}
-
-const Button: React.FC<Props> = ({
+const Button = ({
   rowsPerPage,
   setCurrentPage,
   currentPage,
@@ -27,7 +18,6 @@ const Button: React.FC<Props> = ({
           onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
         >
-        
           <label> Previous</label>
         </button>
         <span className="text-base">
@@ -38,7 +28,7 @@ const Button: React.FC<Props> = ({
           onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
           disabled={currentPage === totalPages}
         >
-          <label> Next</label> 
+          <label> Next</label>
         </button>
       </div>
     </div>

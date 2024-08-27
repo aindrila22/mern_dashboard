@@ -54,78 +54,79 @@ const Home = () => {
 
   return (
     <>
-    <div className="flex justify-start items-start w-full h-screen overflow-hidden">
-      <Sidebar
-        onScroll={handleScroll}
-        refs={{ barChartRef, donutChartRef, tabDataRef }}
-      />
-      <div className="w-full h-full overflow-y-auto pb-10">
-        <div className="text-center py-8">
-          <h1 className="text-4xl font-bold text-gray-800">
-            Data Visualization Dashboard
-          </h1>
-          <p className="text-lg text-gray-600 mt-2">
-            A MERN Stack Project with Interactive Charts and Filters
-          </p>
-        </div>
-
-        {loading && <p className="text-blue-500 text-center py-10">Loading data...</p>}
-        {error && <p className="text-red-500 text-center py-10">{error}</p>}
-        <div className="grid grid-cols-1 w-full max-w-7xl mx-auto gap-5 px-6">
-          <div ref={barChartRef}>
-            <BarChart />
+      <div className="flex justify-start items-start w-full h-screen overflow-hidden">
+        <Sidebar
+          onScroll={handleScroll}
+          refs={{ barChartRef, donutChartRef, tabDataRef }}
+        />
+        <div className="w-full h-full overflow-y-auto pb-10">
+          <div className="text-center py-8">
+            <h1 className="text-4xl font-bold text-gray-800">
+              Data Visualization Dashboard
+            </h1>
+            <p className="text-lg text-gray-600 mt-2">
+              A MERN Stack Project with Interactive Charts and Filters
+            </p>
           </div>
-          <div ref={donutChartRef}>
-            <DonutChart />
-          </div>
-        </div>
 
-        {!loading && dataTables.length > 0 && (
-          <div
-            ref={tabDataRef}
-            className="grid w-full max-w-7xl mx-auto gap-5 px-6"
-          >
-            <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-5">
-              <TabularData
-                data={dataTables[0]}
-                error={error}
-                loading={loading}
-                heading="Basic Information"
-              />
-              <TabularData
-                data={dataTables[1]}
-                error={error}
-                loading={loading}
-                heading="Insights and Intensity"
-              />
-              <TabularData
-                data={dataTables[2]}
-                error={error}
-                loading={loading}
-                heading="PEST and Regional Information"
-              />
-              <TabularData
-                data={dataTables[3]}
-                error={error}
-                loading={loading}
-                heading="Sector and Source"
-              />
+          {loading && (
+            <p className="text-blue-500 text-center py-10">Loading data...</p>
+          )}
+          {error && <p className="text-red-500 text-center py-10">{error}</p>}
+          <div className="grid grid-cols-1 w-full max-w-7xl mx-auto gap-5 px-6">
+            <div ref={barChartRef}>
+              <BarChart />
             </div>
-            <div className="grid grid-cols-1 max-w-6xl mx-auto w-full gap-5">
-              <TabularData
-                data={dataTables[4]}
-                error={error}
-                loading={loading}
-                heading="Title and Reference"
-              />
+            <div ref={donutChartRef}>
+              <DonutChart />
             </div>
           </div>
-        )}
+
+          {!loading && dataTables.length > 0 && (
+            <div
+              ref={tabDataRef}
+              className="grid w-full max-w-7xl mx-auto gap-5 px-6"
+            >
+              <div className="grid md:grid-cols-2 grid-cols-1 w-full gap-5">
+                <TabularData
+                  data={dataTables[0]}
+                  error={error}
+                  loading={loading}
+                  heading="Basic Information"
+                />
+                <TabularData
+                  data={dataTables[1]}
+                  error={error}
+                  loading={loading}
+                  heading="Insights and Intensity"
+                />
+                <TabularData
+                  data={dataTables[2]}
+                  error={error}
+                  loading={loading}
+                  heading="PEST and Regional Information"
+                />
+                <TabularData
+                  data={dataTables[3]}
+                  error={error}
+                  loading={loading}
+                  heading="Sector and Source"
+                />
+              </div>
+              <div className="grid grid-cols-1 max-w-6xl mx-auto w-full gap-5">
+                <TabularData
+                  data={dataTables[4]}
+                  error={error}
+                  loading={loading}
+                  heading="Title and Reference"
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-
-    </div>
-      <Footer/>
-      </>
+      <Footer />
+    </>
   );
 };
 

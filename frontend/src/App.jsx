@@ -2,7 +2,6 @@ import React from "react";
 import PageNotFound from "./components/PageNotFound";
 import { Routes, Route } from "react-router-dom";
 
-
 const Home = React.lazy(() => import("./components/Home"));
 
 function App() {
