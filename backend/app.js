@@ -4,6 +4,8 @@ const cors = require("cors");
 const app = express();
 const insertDataRoute = require("./routes/insert_data");
 const dataRoutes = require("./routes/get_data");
+const allDataRoutes = require("./routes/get_data");
+
 
 const connectDB = require("./config/db");
 connectDB();
@@ -15,6 +17,7 @@ app.use(cors({
 
 app.use('/api', insertDataRoute);
 app.use('/api', dataRoutes);
+app.use('/api', allDataRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
