@@ -69,7 +69,7 @@ const Home = () => {
           </p>
         </div>
 
-        {loading && <p>Loading data...</p>}
+        {loading && <p className="text-blue-500 text-center py-10">Loading data...</p>}
         {error && <p className="text-red-500 text-center py-10">{error}</p>}
         <div className="grid grid-cols-1 w-full max-w-7xl mx-auto gap-5 px-6">
           <div ref={barChartRef}>
